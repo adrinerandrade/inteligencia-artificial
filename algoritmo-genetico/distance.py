@@ -1,29 +1,33 @@
 from random import randint
+import queue
+import math
 
 class Distance:
-    def __init__(self):
-        self.size_x = 20
-        self.size_y = 21
-        self.matrix = [[0 for y in range(self.size_y)] for x in range(self.size_x)]
-        for x in range(self.size_x):
-            for y in range(self.size_y):
-                if (x == y - 1):
-                    self.matrix[x][y - 1] = 0
-                else:
-                    value = randint(1, 1000) / 1000
-                    self.matrix[x][y - 1] = value
-                    self.matrix[y - 1][x] = value
 
-    def duplicate_first_distance(self):
-        is_first = True
-        first_value = 0;
-        for x in range(len(self.matrix)):
-            for y in range(len(self.matrix[x])):
-                if (is_first):
-                    first_value = self.matrix[x][y]
-                    is_first = False
-            self.matrix[x][self.size_y - 1] = first_value
-            is_first = True
+    def __init__(self, cities):
+        self.cities = cities
 
-    def get_distance(self, x, y):
-        return self.matrix[x][y]
+    def get_distance(self, city_1, city_2):
+        location_1 = self.cities.get_city(city_1)
+        location_2 = self.cities.get_city(city_2)
+        x_dist = location_2.x - location_1.x
+        y_dist = location_2.y - location_1.y
+        return math.sqrt(x_dist**2, y_dist**2)
+    
+    def calculate_distance(self, chromosome):
+        cities = chromosome.get_cities()
+        cities_queue = queue.Queue(maxsize=21)
+        for city in cities:
+            cities_queue.put(city)
+
+        # Deve voltar a primeira cidade
+        cities_queue.put(cities[0])
+
+        total_distance = 0
+        while (cities_queue.qsize > 1):
+            city_1 = cities_queue.get()
+            city_2 = cities_queue.get()
+            total_distance += self.get_distance(city_1, city_2)
+            cities_queue.put(city_2)
+
+        return total_distance
