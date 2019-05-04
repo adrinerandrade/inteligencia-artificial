@@ -2,7 +2,7 @@ from random import randint
 import queue
 import math
 
-class Distance:
+class DistanceResolver:
 
     def __init__(self, cities):
         self.cities = cities

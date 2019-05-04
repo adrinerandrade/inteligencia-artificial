@@ -1,11 +1,11 @@
 from generator import Generator
-from distance import Distance
+from distance import DistanceResolver
 
 class Population:
     def __init__(self, cities):
         self.population_size = 20
         self.population = []
-        self.distance = Distance(cities)
+        self.distance_resolver = DistanceResolver(cities)
         gen = Generator()
         for _ in range(self.population_size):
             self.population.append(gen.generate_random_chromosome())
@@ -14,8 +14,13 @@ class Population:
         return self.population
 
     def next_generation(self):
+        distances = []
+        for i in range(len(self.population)):
+            distances[i] = self.distance_resolver.calculate_distance(self.population[i])
+
         # Realizar operação de geração de uma nova geração
-        print('Realiza a operação de uma nova geração')
+        print('Realiza a operação de uma nova geração (seleção, mutação, crossover)')
+
 
     # def catch_best_parents(self):
     #     bests = [sys.float_info.max for y in range(self.size_x)]
