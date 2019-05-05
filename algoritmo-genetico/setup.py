@@ -16,6 +16,11 @@ best_solution = final_population[0]
 best_chromosome = best_solution[0]
 best_distance = best_solution[1]
 
+print("Tamanho da população: {}", len(final_population))
+print("Taxa de mutação: 5%")
+print("Número de cidades: {}", len(citiesLocation))
+print("Melhor solução: {}", best_distance)
+
 plt.plot(citiesLocation.get_cities()[0], citiesLocation.get_cities()[1], 'ro')
 
 best_chromosome_cities = best_chromosome.get_cities()
