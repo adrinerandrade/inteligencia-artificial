@@ -1,5 +1,7 @@
 from generator import Generator
 from distance import DistanceResolver
+from roulette import Roulette
+from chromosome import Chromosome
 
 class Population:
     def __init__(self, cities):
@@ -14,31 +16,31 @@ class Population:
         return self.population
 
     def next_generation(self):
+        parents = self.select_best_parents()
+        newPop = []
+        newPop.extend(map(lambda tup: tup[0], parents))
+        newPop.extend(self.createChildren(parents))
+        self.population = newPop
+
+    # Seleciona a melhor metade da população
+    def select_best_parents(self):
         distances = []
         for i in range(len(self.population)):
-            distances[i] = self.distance_resolver.calculate_distance(self.population[i])
+            chromosome = self.population[i]
+            distance = self.distance_resolver.calculate_distance(chromosome)
+            distances[i] = (chromosome, distance)
+        distances.sort(key=lambda tup: tup[1], reverse=True)
+        return distances[0:10]
 
-        # Realizar operação de geração de uma nova geração
-        print('Realiza a operação de uma nova geração (seleção, mutação, crossover)')
+    def createChildren(self, parents):
+        roulette = Roulette(parents)
+        children = []
+        for _ in range(5):
+            parent_1 = roulette.select_parent()
+            parent_2 = roulette.select_parent()
 
-
-    # def catch_best_parents(self):
-    #     bests = [sys.float_info.max for y in range(self.size_x)]
-    #     value_line_matrix = 0;
-    #     for x in range(len(self.matrix)):
-    #         value_line_matrix = 0
-    #         for y in range(len(self.matrix[x])):
-    #             value_line_matrix += self.matrix[x][y]
-    #         bests[x] = value_line_matrix
-    #     bests.sort()
-    #     self.set_best_line(bests)
-        
-    # def set_best_line(self, bests):
-    #     value_line_matrix = 0;
-    #     for best_index in range(len(bests) // 2):
-    #         for x in range(len(self.matrix)):
-    #             value_line_matrix = 0
-    #             for y in range(len(self.matrix[x])):
-    #                 value_line_matrix += self.matrix[x][y]
-    #             if (value_line_matrix == bests[best_index]):
-    #                 self.best_parents[x] = self.matrix[x]
+            # TODO - Crossover e mutação para gerar os dois filhos
+            # children.append(Chromosome(child_1))
+            # children.append(Chromosome(child_2))
+            
+        return children
