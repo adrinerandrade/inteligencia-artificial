@@ -16,24 +16,24 @@ class Population:
             self.population.append(gen.generate_random_chromosome())
     
     def get_population(self): 
-        return self.population
+        return self.select_best_parents(20)
 
     def next_generation(self):
-        parents = self.select_best_parents()
+        parents = self.select_best_parents(10)
         newPop = []
         newPop.extend(map(lambda tup: tup[0], parents))
         newPop.extend(self.createChildren(parents))
         self.population = newPop
 
     # Seleciona a melhor metade da população
-    def select_best_parents(self):
+    def select_best_parents(self, limit):
         distances = []
         for i in range(len(self.population)):
             chromosome = self.population[i]
             distance = self.distance_resolver.calculate_distance(chromosome)
             distances.append((chromosome, distance))
-        distances.sort(key=lambda tup: tup[1], reverse=True)
-        return distances[0:10]
+        distances.sort(key=lambda tup: tup[1])
+        return distances[0:limit]
 
     def createChildren(self, parents):
         roulette = Roulette(parents)

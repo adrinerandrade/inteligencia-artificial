@@ -12,3 +12,6 @@ class Cities:
 
     def get_city(self, index):
         return Location(self.x[index], self.y[index])
+
+    def get_cities(self):
+        return (self.x, self.y)
