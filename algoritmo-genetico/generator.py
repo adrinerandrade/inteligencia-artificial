@@ -9,7 +9,7 @@ class Generator:
             cities.append(i)
 
         genes = []
-        while (len(cities) > 0):
+        while len(cities) > 0:
             city = randint(0, len(cities) - 1)
             genes.append(cities.pop(city))
         

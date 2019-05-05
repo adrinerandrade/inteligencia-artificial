@@ -2,6 +2,9 @@ from generator import Generator
 from distance import DistanceResolver
 from roulette import Roulette
 from chromosome import Chromosome
+from random import randint
+from crossover import Crossover
+from mutation import Mutation
 
 class Population:
     def __init__(self, cities):
@@ -38,9 +41,10 @@ class Population:
         for _ in range(5):
             parent_1 = roulette.select_parent()
             parent_2 = roulette.select_parent()
-
-            # TODO - Crossover e mutação para gerar os dois filhos
-            # children.append(Chromosome(child_1))
-            # children.append(Chromosome(child_2))
+            new_children = Crossover(parent_1, parent_2).generate_children()
+            Mutation(new_children[0]).mutate()
+            Mutation(new_children[1]).mutate()
+            children.append(Chromosome(new_children[0]))
+            children.append(Chromosome(new_children[1]))
             
         return children

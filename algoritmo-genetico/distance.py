@@ -14,17 +14,17 @@ class DistanceResolver:
     
     def calculate_distance(self, chromosome):
         cities = chromosome.get_cities()
-        cities_queue = []
+        path = []
         for i in range(len(cities)):
-            cities_queue[i] = cities[i]
+            path[i] = cities[i]
 
         # Deve voltar a primeira cidade
-        cities_queue.append(cities[0])
+        path.append(cities[0])
 
         total_distance = 0
         for i in range(len(cities)):
-            city_1 = cities_queue[i]
-            city_2 = cities_queue[i + 1]
+            city_1 = path[i]
+            city_2 = path[i + 1]
             total_distance += self.get_distance(city_1, city_2)
 
         return total_distance
