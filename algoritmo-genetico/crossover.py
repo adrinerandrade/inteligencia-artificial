@@ -4,8 +4,8 @@ from chromosome import Chromosome
 class Crossover:
 
     def __init__(self, parent_1, parent_2):
-        self.parent_1 = parent_1
-        self.parent_2 = parent_2
+        self.parent_1 = Chromosome(parent_1.get_cities()[:])
+        self.parent_2 = Chromosome(parent_2.get_cities()[:])
 
     # Cria um gene filho
     def generate_children(self):
