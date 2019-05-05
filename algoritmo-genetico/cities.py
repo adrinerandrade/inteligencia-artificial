@@ -15,3 +15,6 @@ class Cities:
 
     def get_cities(self):
         return (self.x, self.y)
+
+    def get_cities_count(self):
+        return self.count
