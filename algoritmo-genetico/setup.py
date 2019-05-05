@@ -4,7 +4,7 @@ from population import Population
 cities = Cities()
 population = Population(cities)
 
-for _ in range(10000):
+for _ in range(100):
     population.next_generation()
 
 # resultado final

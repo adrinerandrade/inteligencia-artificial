@@ -28,7 +28,7 @@ class Population:
         for i in range(len(self.population)):
             chromosome = self.population[i]
             distance = self.distance_resolver.calculate_distance(chromosome)
-            distances[i] = (chromosome, distance)
+            distances.append((chromosome, distance))
         distances.sort(key=lambda tup: tup[1], reverse=True)
         return distances[0:10]
 

@@ -7,8 +7,8 @@ class Cities:
         self.x = []
         self.y = []
         for i in range(self.count):
-            self.x[i] = randint(1, 10000) / 10000
-            self.y[i] = randint(1, 10000) / 10000
+            self.x.append(randint(1, 10000) / 10000)
+            self.y.append(randint(1, 10000) / 10000)
 
     def get_city(self, index):
         return Location(self.x[index], self.y[index])

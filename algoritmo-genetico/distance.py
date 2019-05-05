@@ -11,7 +11,7 @@ class DistanceResolver:
         location_2 = self.cities.get_city(city_2)
         x_dist = location_2.x - location_1.x
         y_dist = location_2.y - location_1.y
-        return math.sqrt(x_dist**2, y_dist**2)
+        return math.sqrt(x_dist**2) + math.sqrt(y_dist**2)
     
     def calculate_distance(self, chromosome):
         cities = chromosome.get_cities()
@@ -23,7 +23,7 @@ class DistanceResolver:
         cities_queue.put(cities[0])
 
         total_distance = 0
-        while (cities_queue.qsize > 1):
+        while (cities_queue.qsize() > 1):
             city_1 = cities_queue.get()
             city_2 = cities_queue.get()
             total_distance += self.get_distance(city_1, city_2)
