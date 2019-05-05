@@ -6,17 +6,9 @@ import matplotlib
 
 cities_location = Cities()
 population = Population(cities_location)
-p = population.get_population()
-for i in range(len(p)):
-    print(p[i][0].get_cities(), p[i][1])
-print()
 
-for _ in range(5):
-    population.next_generation()
-    p = population.get_population()
-    for i in range(len(p)):
-        print(p[i][0].get_cities(), p[i][1])
-    print()
+for _ in range(10000):
+    population.next_generation()    
 
 # resultado final
 final_population = population.get_population()
@@ -45,4 +37,4 @@ best_path_y.append(first_city.y)
 
 plt.plot(best_path_x, best_path_y)
 
-# plt.show()
+plt.show()

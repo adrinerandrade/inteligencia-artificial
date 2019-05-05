@@ -21,14 +21,9 @@ class Population:
     # Cria a proxima geração
     def next_generation(self):
         parents = self.select_best_parents(10)
-        for i in range(len(parents)):
-            print(parents[i][0].get_cities(), parents[i][1])
-        print()
         newPop = []
-        for parent in list(map(lambda tup: tup[0], parents)):
-            newPop.append(parent)
-        for child in self.createChildren(parents):
-            newPop.append(child)
+        newPop.extend(map(lambda tup: tup[0], parents))
+        newPop.extend(self.createChildren(parents))
         self.population = newPop
 
     # Seleciona a melhor metade da população
