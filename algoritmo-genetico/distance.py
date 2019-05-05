@@ -1,15 +1,17 @@
 import math
 
 class DistanceResolver:
-
     def __init__(self, cities):
         self.cities = cities
 
+    # Obtem a distancia em linha reta.
     def get_distance(self, city_1, city_2):
+        # Obtem duas cidades
         location_1 = self.cities.get_city(city_1)
         location_2 = self.cities.get_city(city_2)
         x_dist = location_2.x - location_1.x
         y_dist = location_2.y - location_1.y
+        # Soma-se a rais quadrada das duas distancias.
         return math.sqrt(x_dist**2) + math.sqrt(y_dist**2)
     
     # Calcula a distancia das cidades

@@ -1,12 +1,13 @@
 from random import randint
 
 class Roulette:
-
     def __init__(self, parents):
+        # Otem o total dos pais
         self.total = 0.0
         for parent in parents:
             self.total += 1/parent[1]
 
+        # Algoritmo da roleta
         self.probs = list(map(lambda parent: (parent[0], (1/parent[1])/self.total), parents))
         self.probs.sort(key=lambda tup: tup[1])
         for i in range(1, len(self.probs) - 1):
