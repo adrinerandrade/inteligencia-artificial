@@ -44,7 +44,7 @@ class Population:
             new_children = Crossover(parent_1, parent_2).generate_children()
             Mutation(new_children[0]).mutate()
             Mutation(new_children[1]).mutate()
-            children.append(Chromosome(new_children[0]))
-            children.append(Chromosome(new_children[1]))
+            children.append(new_children[0])
+            children.append(new_children[1])
             
         return children

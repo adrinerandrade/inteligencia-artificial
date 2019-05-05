@@ -14,9 +14,7 @@ class DistanceResolver:
     
     def calculate_distance(self, chromosome):
         cities = chromosome.get_cities()
-        path = []
-        for i in range(len(cities)):
-            path[i] = cities[i]
+        path = cities[:]
 
         # Deve voltar a primeira cidade
         path.append(cities[0])
