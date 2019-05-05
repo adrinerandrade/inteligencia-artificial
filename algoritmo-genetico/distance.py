@@ -1,4 +1,3 @@
-import queue
 import math
 
 class DistanceResolver:
@@ -15,18 +14,17 @@ class DistanceResolver:
     
     def calculate_distance(self, chromosome):
         cities = chromosome.get_cities()
-        cities_queue = queue.Queue(maxsize=21)
-        for city in cities:
-            cities_queue.put(city)
+        cities_queue = []
+        for i in range(len(cities)):
+            cities_queue[i] = cities[i]
 
         # Deve voltar a primeira cidade
-        cities_queue.put(cities[0])
+        cities_queue.append(cities[0])
 
         total_distance = 0
-        while (cities_queue.qsize() > 1):
-            city_1 = cities_queue.get()
-            city_2 = cities_queue.get()
+        for i in range(len(cities)):
+            city_1 = cities_queue[i]
+            city_2 = cities_queue[i + 1]
             total_distance += self.get_distance(city_1, city_2)
-            cities_queue.put(city_2)
 
         return total_distance
