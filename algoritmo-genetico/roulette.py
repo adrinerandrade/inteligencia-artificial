@@ -7,10 +7,13 @@ class Roulette:
         for parent in parents:
             self.total += 1/parent[1]
 
-        self.probs = list(map(lambda parent: (parent[0], parent[1]/self.total), parents))
+        self.probs = list(map(lambda parent: (parent[0], (1/parent[1])/self.total), parents))
         self.probs.sort(key=lambda tup: tup[1])
-        for i in range(1, len(self.probs)):
+        for i in range(1, len(self.probs) - 1):
             self.probs[i] = (self.probs[i][0], self.probs[i - 1][1] + self.probs[i][1])
+
+        last_index = len(self.probs) - 1
+        self.probs[last_index] = (self.probs[last_index][0], 1)
 
     def select_parent(self):
         number = randint(1, 10000) / 10000
