@@ -1,5 +1,6 @@
 from random import randint
 
+# Logica da roleta
 class Roulette:
 
     def __init__(self, parents):
@@ -12,6 +13,7 @@ class Roulette:
         for i in range(1, len(self.probs)):
             self.probs[i] = (self.probs[i][0], self.probs[i - 1][1] + self.probs[i][1])
 
+    # Seleciona os pais
     def select_parent(self):
         number = randint(1, 10000) / 10000
         for i in range(len(self.probs)):

@@ -1,6 +1,7 @@
 from random import randint
 from location import Location
 
+# Cria uma matriz de cidades aleatórias
 class Cities:
     def __init__(self):
         self.count = 20

@@ -7,6 +7,7 @@ class Crossover:
         self.parent_1 = parent_1
         self.parent_2 = parent_2
 
+    # Cria um gene filho
     def generate_children(self):
         genes_1 = self.parent_1.get_cities()
         genes_2 = self.parent_2.get_cities()
@@ -28,6 +29,7 @@ class Crossover:
         genes_1[gene] = genes_2[gene]
         genes_2[gene] = tmp
 
+    # Dulica o gene
     def get_duplicated_gene(self, genes, exchanged_genes):
         for gene in range(len(genes)):
             if gene in exchanged_genes:

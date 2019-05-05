@@ -12,6 +12,7 @@ class DistanceResolver:
         y_dist = location_2.y - location_1.y
         return math.sqrt(x_dist**2) + math.sqrt(y_dist**2)
     
+    # Calcula a distancia das cidades
     def calculate_distance(self, chromosome):
         cities = chromosome.get_cities()
         path = cities[:]

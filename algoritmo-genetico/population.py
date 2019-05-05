@@ -18,6 +18,7 @@ class Population:
     def get_population(self): 
         return self.select_best_parents(20)
 
+    # Cria a proxima geração
     def next_generation(self):
         parents = self.select_best_parents(10)
         newPop = []
@@ -35,6 +36,7 @@ class Population:
         distances.sort(key=lambda tup: tup[1])
         return distances[0:limit]
 
+    # Crias os filhos com base na roleta
     def createChildren(self, parents):
         roulette = Roulette(parents)
         children = []

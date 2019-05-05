@@ -2,7 +2,7 @@ from random import randint
 from chromosome import Chromosome
 
 class Generator:
-
+    # Gera os chromossomos
     def generate_random_chromosome(self):
         cities = []
         for i in range(20):

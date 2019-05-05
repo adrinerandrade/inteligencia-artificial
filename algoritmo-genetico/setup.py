@@ -4,10 +4,13 @@ from distance import DistanceResolver
 import matplotlib.pyplot as plt
 import matplotlib
 
+# Inicializa as cidades
 cities_location = Cities()
+
+# Cria a população
 population = Population(cities_location)
 
-for _ in range(100):
+for _ in range(10000):
     population.next_generation()
 
 # resultado final
@@ -16,11 +19,14 @@ best_solution = final_population[0]
 best_chromosome = best_solution[0]
 best_distance = best_solution[1]
 
+
+# exbide os dados na tela
 print("Tamanho da população: {}".format(len(final_population)))
 print("Taxa de mutação: 5%")
 print("Número de cidades: {}".format(cities_location.get_cities_count()))
 print("Melhor solução: {}".format(best_distance))
 
+# Plota os dados na tela
 plt.plot(cities_location.get_cities()[0], cities_location.get_cities()[1], 'ro')
 
 best_chromosome_cities = best_chromosome.get_cities()
