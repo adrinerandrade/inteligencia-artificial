@@ -11,7 +11,7 @@ cities_location = Cities()
 population = Population(cities_location)
 
 for _ in range(10000):
-    # executa várias vezes até encontrar a geração perfeita
+    # Executa várias vezes em a geração de uma nova população com indíviduos mais "capacitados"
     population.next_generation()    
 
 # resultado final

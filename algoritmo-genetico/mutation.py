@@ -4,7 +4,7 @@ class Mutation:
     def __init__(self, chromosome):
         self.chromosome = chromosome
 
-    # Cria a mutação
+    # Realiza a mutação em um cromossomo
     def mutate(self):
         # 5% de chance de ocorrer uma mutação
         do_mutation = randint(1, 100) <= 5

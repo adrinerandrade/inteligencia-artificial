@@ -7,11 +7,10 @@ class Crossover:
         self.parent_1 = Chromosome(parent_1.get_cities()[:])
         self.parent_2 = Chromosome(parent_2.get_cities()[:])
 
-    # Cria genes filhos, a partir de dois pais.
+    # Cria dois novos filhos, a partir de dois pais.
     def generate_children(self):
         genes_1 = self.parent_1.get_cities()
         genes_2 = self.parent_2.get_cities()
-        # cria um gene rando com base no tamanho do pai
         # -1 devido ao LEN() retornar valor do index começando com 1
         selected_gene = randint(0, len(genes_1) - 1)
         self.exchange_gene(selected_gene, genes_1, genes_2)
@@ -31,7 +30,7 @@ class Crossover:
         genes_1[gene] = genes_2[gene]
         genes_2[gene] = tmp
 
-    # Dulica o gene
+    # verifica qual o próximo gene duplicado, não considerando os que já foram trocados
     def get_duplicated_gene(self, genes, exchanged_genes):
         for gene in range(len(genes)):
             if gene in exchanged_genes:

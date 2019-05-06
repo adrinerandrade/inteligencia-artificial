@@ -11,10 +11,10 @@ class DistanceResolver:
         location_2 = self.cities.get_city(city_2)
         x_dist = location_2.x - location_1.x
         y_dist = location_2.y - location_1.y
-        # Soma-se a rais quadrada das duas distancias.
-        return math.sqrt(x_dist**2) + math.sqrt(y_dist**2)
+        # Calcula a distância euclidiana entre dois pontos
+        return math.sqrt(x_dist**2 + y_dist**2)
     
-    # Calcula a distancia das cidades
+    # Calcula a distancia total de um cromossomo (Função de aptidão)
     def calculate_distance(self, chromosome):
         cities = chromosome.get_cities()
         path = cities[:]

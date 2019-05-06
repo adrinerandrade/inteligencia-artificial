@@ -25,7 +25,7 @@ class Population:
 
     # Cria a proxima geração
     def next_generation(self):
-        # Seleciona os melhors pais
+        # Seleciona os melhores pais
         parents = self.select_best_parents(10)
         # Cria a lista de nova população
         newPop = []
@@ -47,7 +47,7 @@ class Population:
 
     # Crias os filhos com base na roleta
     def createChildren(self, parents):
-        # executa a releta
+        # Cria a roleta
         roulette = Roulette(parents)
         children = []
         # Cria 10 filhos
@@ -55,6 +55,7 @@ class Population:
             parent_1 = roulette.select_parent()
             parent_2 = roulette.select_parent()
             new_children = Crossover(parent_1, parent_2).generate_children()
+            # Realiza a mutação nos filhos (respeitando a proporcionalidade)
             Mutation(new_children[0]).mutate()
             Mutation(new_children[1]).mutate()
             children.append(new_children[0])
