@@ -21,7 +21,7 @@ best_chromosome = best_solution[0]
 best_distance = best_solution[1]
 
 print("Tamanho da população: {}".format(len(final_population)))
-print("Taxa de mutação: 5%")
+print("Taxa de mutação: 10%")
 print("Número de cidades: {}".format(cities_location.get_cities_count()))
 print("Melhor custo: {}".format(best_distance))
 print("Melhor solução: {}".format(best_chromosome.get_cities()))
