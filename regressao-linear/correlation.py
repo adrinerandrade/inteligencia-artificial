@@ -7,10 +7,9 @@ class Correlation:
     self.x_array = x_array
     self.y_array = y_array
 
-  def calc(self):
+  def calc_r(self):
     x_average = self.average(self.x_array)
-    y_average = self.average(self.y_array)
-    
+    y_average = self.average(self.y_array)   
 
   def average(self, arr):
     sum = reduce(operator.add, arr)
