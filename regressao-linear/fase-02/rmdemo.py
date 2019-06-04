@@ -31,7 +31,7 @@ def strnum(x):
 class DataSet:
     def __init__(self, id, x, y):
         self.id = id
-        self.x = np.array(x)
+        self.x = np.array([[1, elem[0], elem[1]] for elem in x])
         self.y = np.array(y)
         self.x_trans = self.x.transpose()
 
@@ -48,7 +48,8 @@ class RegressaoLinearMultipla:
     def regmultipla(self):
         # 𝛽 = (Xt X)-1 Xty
         transp_x = self.dataset.x.transpose()
-        return np.linalg.inv(transp_x.dot(self.dataset.x)).dot(transp_x).dot(self.dataset.y)
+        print()
+        return np.linalg.inv(transp_x.dot(self.dataset.x)).dot(transp_x.dot(self.dataset.y))
 
     def correlacao(self, dimensao):
         # Calcula mediana dos vetores
@@ -110,6 +111,7 @@ if data is not None:
     ds = DataSet('Dataset 1', data[:, 0:2], data[:, 2])
     rlm = RegressaoLinearMultipla(ds)
 
+    """
     # Verificar a correlação e a regressão para Tamanho da casa e Preço e gerar o gráfico de dispersão
     x0_corr = rlm.correlacao(0)
     x0_b0, x0_b1 = rlm.regressao(0)
@@ -135,6 +137,7 @@ if data is not None:
     plt.xlabel('Número de Quartos')
     plt.ylabel('Preço')
     plt.show()
+    """
 
     # Cria o gráfico de dispersão em 3D com o tamanho da casa, número de quartos, e o preço da casa
     # Gera a linha de regressão para as 3 dimensões
@@ -150,7 +153,7 @@ if data is not None:
     plt.show()
 
     # Calcule o preço de uma casa que tem tamanho de 1650 e 3 quartos. O resultado deve ser igual a 293081
-    print('Preço de uma casa de tamanho 1650 e 3 quartos: ', strnum(rlm.reta_regressao_multipla(b, [1650, 3])))
+    print('Preço de uma casa de tamanho 1650 e 3 quartos: ', strnum(rlm.reta_regressao_multipla(b, [1, 1650, 3])))
 
 else:
     print('Erro ao ler arquivo')
