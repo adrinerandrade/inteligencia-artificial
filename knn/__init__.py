@@ -1,5 +1,5 @@
-from normalization import normalize
+import scipy.io as scipy
 
-print(normalize([0, 2, 3, 4, 5, 6, 7, 8, 9, 10]))
-print(normalize([0, 20, 30, 40, 50, 60, 70, 80, 90, 100]))
-print(normalize([0, 890, 235, 40, 400, 720, 400, 550, 900, 1000]))
+mat = scipy.loadmat('./data/grupoDados1.mat')
+grupoTest = mat['grupoTest']
+
