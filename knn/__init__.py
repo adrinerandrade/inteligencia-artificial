@@ -16,5 +16,4 @@ for i in range(total_test):
   if train_rotulo == rotulos_previstos[i]:
     total_corretos += 1
 
-print("Acurácia: {}", total_corretos / total_test)
-print(rotulos_previstos)
+print("Acurácia: ", (total_corretos / total_test) * 100)
