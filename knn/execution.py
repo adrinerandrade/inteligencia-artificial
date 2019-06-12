@@ -8,8 +8,9 @@ from normalization import Normalize
 # Executa um knn dado o endereço do caminho dos dados e um valor de K.
 def execute_scenario(dados, k):
   mat = scipy.loadmat('./data/%s.mat' % dados)
-  grupoTrain = normalize_function(copy.copy(mat['grupoTrain']), copy.copy(mat['grupoTrain']))
-  grupoTest = normalize_function(copy.copy(mat['grupoTrain']), copy.copy(mat['grupoTest']))
+  normalize_function(copy.copy(mat['grupoTrain']), mat['grupoTrain'], mat['grupoTest'])
+  grupoTrain = mat['grupoTrain']
+  grupoTest = mat['grupoTest']
   trainRotulos = mat['trainRots']
   testRotulos = mat['testRots']
 
@@ -24,10 +25,15 @@ def execute_scenario(dados, k):
       total_corretos += 1
   print('Acurácia sendo k = %s: %s%%' % (k, (total_corretos / total_test) * 100))
 
-# Normaliza os dados 
-def normalize_function(train, dados):
-  train = numpy.transpose(train)
+# Normaliza os dados com base no valor do train
+def normalize_function(dados, train, test):
   dados = numpy.transpose(dados)
+  train = numpy.transpose(train)
+  test = numpy.transpose(test)
   for i in range(len(train)):
-    dados[i] = Normalize(train[i]).normalizeData(dados[i])
-  return numpy.transpose(dados)
+    # normaliza os dados
+    normalize_instance = Normalize(dados[i])
+    # normaliza os dados do train com base no train
+    train[i] = normalize_instance.normalize_array(train[i])
+    # normaliza os dados do test com base no train
+    test[i] = normalize_instance.normalize_array(test[i])

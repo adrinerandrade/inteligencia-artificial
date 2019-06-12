@@ -4,6 +4,7 @@ class Normalize:
     self.value_range = 0
     self.calcule(train)
 
+  # obtem o valor minimo, e a diferença 
   def calcule(self, values):
     max = None
     min = None
@@ -20,7 +21,8 @@ class Normalize:
     self.value_range = max - min
     self.min = min
 
-  def normalizeData(self, array):
+  # normaliza os dados com base no valor minimo e diferenca
+  def normalize_array(self, array):
     for i in range(len(array)):
       array[i] = (array[i] - self.min) / self.value_range
     return array
