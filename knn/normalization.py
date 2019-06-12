@@ -1,18 +1,26 @@
-def normalize(values):
-  max = None
-  min = None
-  for value in values:
-    if max == None and min == None:
-      min = value
-      max = value
-    else:
-      if max < value:
-        max = value
-      if min > value:
+class Normalize:
+  def __init__(self, train):
+    self.min = 0
+    self.value_range = 0
+    self.calcule(train)
+
+  def calcule(self, values):
+    max = None
+    min = None
+    for value in values:
+      if max == None and min == None:
         min = value
-        
-  value_range = max - min
-  result = []
-  for i in range(len(values)):
-    result.append((values[i] - min)/value_range)
-  return result
+        max = value
+      else:
+        if max < value:
+          max = value
+        if min > value:
+          min = value
+          
+    self.value_range = max - min
+    self.min = min
+
+  def normalizeData(self, array):
+    for i in range(len(array)):
+      array[i] = (array[i] - self.min) / self.value_range
+    return array
