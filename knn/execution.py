@@ -1,6 +1,7 @@
 import scipy.io as scipy
 import numpy as numpy
 import copy as copy
+import matplotlib.pyplot as plt
 
 from knn import do_knn
 from normalization import Normalize
@@ -24,6 +25,19 @@ def execute_scenario(dados, k):
     if train_rotulo == rotulos_previstos[i]:
       total_corretos += 1
   print('Acurácia sendo k = %s: %s%%' % (k, (total_corretos / total_test) * 100))
+  index,sub_plot = plt.subplots()
+  sub_plot.scatter(getDadosRotulo(grupoTrain, trainRotulos, 1, 0), getDadosRotulo(grupoTrain, trainRotulos, 1, 1), c='red'  , marker='^')
+  sub_plot.scatter(getDadosRotulo(grupoTrain, trainRotulos, 2, 0), getDadosRotulo(grupoTrain, trainRotulos, 2, 1), c='blue' , marker='+')
+  sub_plot.scatter(getDadosRotulo(grupoTrain, trainRotulos, 3, 0), getDadosRotulo(grupoTrain, trainRotulos, 3, 1), c='green', marker='.')
+  plt.show()
+
+def getDadosRotulo(dados, rotulos, rotulo, indice):
+  ret = []
+  for idx in range(0, len(dados)):
+    if(rotulos[idx] == rotulo):
+      ret.append(dados[idx][indice])
+          
+  return ret
 
 # Normaliza os dados com base no valor do train
 def normalize_function(dados, train, test):
