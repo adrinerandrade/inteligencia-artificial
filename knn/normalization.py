@@ -1,3 +1,7 @@
+# Adriner Maranho de Andrade
+# Fabio Luiz Fischer
+# Jorge Guilherme Kohn
+
 class Normalize:
   def __init__(self, train):
     self.min = 0

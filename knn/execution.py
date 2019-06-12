@@ -1,3 +1,7 @@
+# Adriner Maranho de Andrade
+# Fabio Luiz Fischer
+# Jorge Guilherme Kohn
+
 import scipy.io as scipy
 import numpy as numpy
 import copy as copy

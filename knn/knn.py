@@ -1,3 +1,7 @@
+# Adriner Maranho de Andrade
+# Fabio Luiz Fischer
+# Jorge Guilherme Kohn
+
 import math as math
 import numpy as numpy
 
