@@ -1,3 +1,7 @@
+# Adriner Maranho de Andrade
+# Fabio Luiz Fischer
+# Jorge Guilherme Kohn
+
 import scipy.io as scipy
 import numpy as numpy
 import copy as copy
@@ -7,9 +11,10 @@ from knn import do_knn
 from normalization import Normalize
 
 # Executa um knn dado o endereço do caminho dos dados e um valor de K.
-def execute_scenario(dados, k):
+def execute_scenario(dados, k, normalizar = True):
   mat = scipy.loadmat('./data/%s.mat' % dados)
-  normalize_function(copy.copy(mat['grupoTrain']), mat['grupoTrain'], mat['grupoTest'])
+  if (normalizar):
+    normalize_function(copy.copy(mat['grupoTrain']), mat['grupoTrain'], mat['grupoTest'])
   grupoTrain = mat['grupoTrain']
   grupoTest = mat['grupoTest']
   trainRotulos = mat['trainRots']
