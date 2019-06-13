@@ -10,16 +10,19 @@ import copy as copy
 from knn import do_knn
 from normalization import Normalize
 
+# Executa um cenário filtrando determinadas caracteristicas
 def execute_scenario_filtering_attributes(dados, k, attrs_filter, attrs_description, normalizar = True):
   print('Executando com as características %s' % (list(map(lambda x: attrs_description[x], attrs_filter))))
   mat = scipy.loadmat('./data/%s.mat' % dados)
   if (normalizar):
     normalize_function(copy.copy(mat['grupoTrain']), mat['grupoTrain'], mat['grupoTest'])
 
+  # Transpõe a matriz para facilitar a filtragem dos valores
   grupoTrain = numpy.transpose(copy.copy(mat['grupoTrain']))
   grupoTest = numpy.transpose(copy.copy(mat['grupoTest']))
   trainResult = []
   testResult = []
+  # Filtrando as características
   for i in attrs_filter:
     trainResult.append(grupoTrain[i])
     testResult.append(grupoTest[i])
@@ -28,6 +31,7 @@ def execute_scenario_filtering_attributes(dados, k, attrs_filter, attrs_descript
   grupoTest = numpy.transpose(testResult)
   trainRotulos = mat['trainRots']
   testRotulos = mat['testRots']
+  # Executando o cenário com as características filtradas
   execute(grupoTrain, grupoTest, trainRotulos, testRotulos, k)
 
 # Executa um knn dado o endereço do caminho dos dados e um valor de K.

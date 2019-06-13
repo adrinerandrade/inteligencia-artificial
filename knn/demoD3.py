@@ -18,6 +18,8 @@ execute_scenario('grupoDados3', 26)
 #       Descubra por que o resultado atual é muito menor.
 #       Ajuste o conjunto de dados ou k de tal forma que a acurácia se torne 92% e explique o que você fez e por quê.
 #
-#       R.: Os dados já estão normalizados, com isso não foi preciso ajustar os dados.
+#       R.: Os dados já estão normalizados, com isso não foi preciso ajustar os dados. Nos resta então, buscar
+#           um melhor valor para k, que se encaixa melhor para o cenário apresentado.
 #           Ajustando o valor de k para 7, foi possível chegar a 92%, mas executando o algoritmo
-#           Com k = 26, podemos chegar ao máximo que é 96% de acurácia.
+#           Com k = 26, podemos chegar ao máximo que é 96% de acurácia, mas quando o k é muito alto existe
+#           a chance de ser algo específico do cenário apresentado.

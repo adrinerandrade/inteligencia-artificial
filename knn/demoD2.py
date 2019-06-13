@@ -25,6 +25,6 @@ execute_scenario('grupoDados2', 10)
 
 #       R.: Os dados não estão normalizados, por isso a acurácia baixa.
 #           Para aumentar a acurácia os dados foram normalizados pois assim trabalhamos somente com a proporção
-#           que existe entre os valores de uma mesma característica. Isso faz com que todas as características
+#           que existe entre os valores de uma mesma característica. Isso faz com que características diferentes
 #           tenham um mesmo valor máximo e valor mínimo, impedindo que uma característica específica domine o cálculo.
-#           Executando com k = 3, chegamos a 98%, porem com k=10, podemos chegar a 100% de acurácia.
+#           Executando com k = 3, chegamos a 98%, porém com k=10, podemos chegar a 100% de acurácia.
