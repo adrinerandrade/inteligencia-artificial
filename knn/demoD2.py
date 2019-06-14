@@ -5,7 +5,7 @@
 from execution import execute_scenario
 
 print('Sem normalização')
-execute_scenario('grupoDados2', 1, False)
+execute_scenario('grupoDados2', 1, False, True)
 print('--------------------------------')
 
 print('Com normalização')

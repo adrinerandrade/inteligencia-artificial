@@ -5,7 +5,7 @@
 from execution import execute_scenario
 
 print('Dados já normalizados')
-execute_scenario('grupoDados3', 1)
+execute_scenario('grupoDados3', 1, True, True)
 execute_scenario('grupoDados3', 7)
 execute_scenario('grupoDados3', 26)
 

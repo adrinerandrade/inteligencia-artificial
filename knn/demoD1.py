@@ -4,7 +4,7 @@
 
 from execution import execute_scenario, execute_scenario_filtering_attributes
 
-execute_scenario('grupoDados1', 1)
+execute_scenario('grupoDados1', 1, True, True)
 execute_scenario('grupoDados1', 5)
 execute_scenario('grupoDados1', 10)
 
