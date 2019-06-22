@@ -1,1 +1,5 @@
-https://pjreddie.com/darknet/yolo/
+YOLO (You only look once) - https://pjreddie.com/darknet/yolo/
+Ferramenta para detecção de objetos em tempo real.
+Com uma placa de vídeo Pascal Titan X (apenas R$ 5.800,00) pode processar imagens a 30 FPS com uma mAP (mean Average Precision) de 57.9%, com uma base dev test COCO DATASET de treinamento.
+
+COCO DATASET - http://cocodataset.org/#home
