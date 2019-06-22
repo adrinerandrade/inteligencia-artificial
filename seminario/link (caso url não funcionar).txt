@@ -1,3 +1,1 @@
 ﻿https://docs.google.com/document/d/11uM81oBeEmrXo9OunZ4pSdcG8yGTCRHIGx6eV4zW1U8/edit?usp=sharing
-
-FERRAMENTAS PARA TRABALHAR COM COMPUTAÇÃO VISUAL (dica: openCv, entre outros)
