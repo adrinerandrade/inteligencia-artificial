@@ -42,8 +42,23 @@ for img_set in dataset:
             _, saturation, value = cv2.split(gray)
             kernel = cv2.getStructuringElement(cv2.MORPH_RECT, (3, 3))
             add = cv2.add(value, cv2.morphologyEx(value, cv2.MORPH_TOPHAT, kernel))
+
+            cv2.imshow("blablba", add)
+            cv2.waitKey(0)
+            cv2.destroyAllWindows()
+
             subtract = cv2.subtract(add, cv2.morphologyEx(value, cv2.MORPH_BLACKHAT, kernel))
+
+            cv2.imshow("blablba", subtract)
+            cv2.waitKey(0)
+            cv2.destroyAllWindows()
+
             blur = cv2.GaussianBlur(subtract, (5, 5), 0)
+
+            cv2.imshow("blablba", subtract)
+            cv2.waitKey(0)
+            cv2.destroyAllWindows()
+
             thresh = cv2.adaptiveThreshold(blur, 255, cv2.ADAPTIVE_THRESH_GAUSSIAN_C, cv2.THRESH_BINARY_INV, 19, 9)
 
             # Tenta buscar contornos na imagem binarizada. Os contornos serão as letras
@@ -58,10 +73,9 @@ for img_set in dataset:
                 if possibleChar.is_valid_char():
                     chars.append(possibleChar)
 
-            if show_cropped_img:
-                cv2.imshow("contours", self.img_contours)
-                cv2.waitKey(0)
-                cv2.destroyAllWindows()
+            cv2.imshow("blablba", img_contours)
+            cv2.waitKey(0)
+            cv2.destroyAllWindows()
 
             plates_list = []
             text_summary = []
