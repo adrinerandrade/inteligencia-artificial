@@ -27,7 +27,7 @@ except:
     string_detector_enable = False
 
 print('\n\n\nO detector de texto pytesseract está', 'habilitado...' if string_detector_enable else 'desabilitado...')
-print('A opção de exibir as imagens recortadas esta', 'habilitada...\n' if show_cropped_img else 'desabilitada...\n')
+print('A opção de exibir as imagens auxiliares esta', 'habilitada...\n' if show_cropped_img else 'desabilitada...\n')
 
 dataset = [(cv2.imread(file), file) for file in glob.glob("Amostras/*.jpg")]
 resultados = []
