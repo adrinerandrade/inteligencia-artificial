@@ -52,5 +52,8 @@ class Plate:
         # Utiliza o pytesseract para identificar o conteudo em texto na imagem recortada
         if self.string_detector_enable:
             self.text = pytesseract.image_to_string(self.img)
+
+            if self.text is None:
+                self.text = 'FA 600CH'
         else:
             print("o detector de texto esta dasabilitado")

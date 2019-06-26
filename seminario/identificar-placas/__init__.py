@@ -35,14 +35,33 @@ resultados = []
 for img_set in dataset:
     img = img_set[0]
     file = img_set[1]
+
+    cv2.imshow("Imagem Original", img)
+    cv2.waitKey(0)
+    cv2.destroyAllWindows()
+
     try:
         if img is not None:
             gray = cv2.cvtColor(img, cv2.COLOR_BGR2HSV)
             # Tratamento da imagem para um ganho de definição
             _, saturation, value = cv2.split(gray)
             kernel = cv2.getStructuringElement(cv2.MORPH_RECT, (3, 3))
+
+            cv2.imshow("TopHat", cv2.morphologyEx(value, cv2.MORPH_TOPHAT, kernel))
+            cv2.waitKey(0)
+            cv2.destroyAllWindows()
+
             add = cv2.add(value, cv2.morphologyEx(value, cv2.MORPH_TOPHAT, kernel))
             subtract = cv2.subtract(add, cv2.morphologyEx(value, cv2.MORPH_BLACKHAT, kernel))
+
+            cv2.imshow("BlackHat", cv2.morphologyEx(value, cv2.MORPH_BLACKHAT, kernel))
+            cv2.waitKey(0)
+            cv2.destroyAllWindows()
+
+            cv2.imshow("Resultado", subtract)
+            cv2.waitKey(0)
+            cv2.destroyAllWindows()
+
             blur = cv2.GaussianBlur(subtract, (5, 5), 0)
             thresh = cv2.adaptiveThreshold(blur, 255, cv2.ADAPTIVE_THRESH_GAUSSIAN_C, cv2.THRESH_BINARY_INV, 19, 9)
 
@@ -59,7 +78,7 @@ for img_set in dataset:
                     chars.append(possibleChar)
 
             if show_cropped_img:
-                cv2.imshow("blablba", img_contours)
+                cv2.imshow("Contornos", img_contours)
                 cv2.waitKey(0)
                 cv2.destroyAllWindows()
 
@@ -110,8 +129,3 @@ for img_set in dataset:
     except:
         print('%s - Falha ao ler arquivo' % file)
 
-# Sumário de execução
-print('\nImagens analisadas: ', len(dataset))
-print('Imagens com texto reconhecido: ', len(resultados))
-print('Porcentagem de reconhecimento: ', round((len(resultados) * 100) / len(dataset), 2))
-# TODO - Verificar se os valores reconhecidos são validos
